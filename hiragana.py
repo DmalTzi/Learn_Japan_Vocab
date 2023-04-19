@@ -23,6 +23,7 @@ def check_vocab(latter):
     global point
     system('clear') # support bash command line (linux/macos/unix)
     system('cls') # support command prompt (windows)
+    
     for i in latter:
         print("===============")
         print(f"Goal : {max_point}")
