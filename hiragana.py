@@ -1,6 +1,7 @@
 import random
 from data import Hiragana
 selects = []
+after_select = []
 
 
 while True:
@@ -11,10 +12,18 @@ while True:
         continue
     else:
         selects.append(select)
-    
+
+def shuffle_latter(i):
+    getlatter = Hiragana[i]
+    random.shuffle(getlatter)  
+    return getlatter  
 
 for i in selects:
-    print(i)
-    print(Hiragana[i])
+    for j in shuffle_latter(i):
+        after_select.append(j)
 
+for i in after_select:
+    user = input("")
+
+print(after_select)
 print(selects)
