@@ -5,12 +5,12 @@
 <p>I hope this project and me will grow at the same time.</p>
 </details>
 
-<details><summary><strong>Road Map Feature</strong></summary>
+<details><summary><strong>RoadMap Feature</strong></summary>
 <ul>
   <li><p>Support Hiragana ✅</p>
   <li><p>Support Katakana ⚫</p>
+  <li><p>Support another Vocab and Kanji ⚫</p>
   <li><p>UX/UI ⚫</p>
-  <li><p>Support some kanji ⚫</p>
   <li><p>Custom Japan Vocab to learn ⚫</p>
   <li><p>Support Web App ⚫</p>
   <li><p>Support Mobile(Android) ⚫</p>
