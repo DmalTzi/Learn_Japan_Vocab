@@ -1,41 +1,52 @@
 import random
-from data import Hiragana, CompareHandK
+from data_vocab import Hiragana, CompareHandK, CompareHandK_Reverse
+from os import system
 
 
-Punctuation_Select = []
-Shuffled_Punctuation = []
-Run_Program = True
+def shuffle_answer(Punctuation_Select):
+    """combine punctuation and chose punctuation by your select"""
+    global max_point
 
-def shuffle_latter(Punctuation_selected):
-    """"Shuffle punctuation from your select"""
-    getlatter = Hiragana[Punctuation_selected]
-    random.shuffle(getlatter)  
-    return getlatter  
+    for Punctuation_char in Punctuation_Select:
+        getlatter = Hiragana[Punctuation_char]
+        random.shuffle(getlatter) 
+
+        for Shuffled_latter in getlatter:
+            Shuffled_Punctuation.append(Shuffled_latter)
+
+    max_point += len(Shuffled_Punctuation)
+
+    return Shuffled_Punctuation
 
 
 def check_vocab(latter):
+    global point
+    system('clear')
     for i in latter:
+        print("===============")
+        print(f"Goal : {max_point}")
         user = input(f"{i} Input Your guess : ").lower()
         try:
             if CompareHandK[user] == i:
-                print("You right")
+                point += 1
+                print(f"Your right, here you point : {point}")
             else:
-                print("You wrong")
+                print(f"Your wrong, The asnwer is : '{CompareHandK_Reverse[i]}'")
+                print(f"Your point : {point}")
         except Exception as e:
             print("Not have in this program's vacab")
             print(e)
 
 
-def shuffle_answer(Punctuation_Select):
-    for Punctuation_char in Punctuation_Select:
-        for Shuffled_latter in shuffle_latter(Punctuation_char):
-            Shuffled_Punctuation.append(Shuffled_latter)
-
-    return Shuffled_Punctuation
+Run_Program = True
 
 while Run_Program:
+    point = 0
+    max_point = 0
+    Punctuation_Select = []
+    Shuffled_Punctuation = []
     while True:
-        select = input("Input : ").lower()
+        select = input("Choise punctuation you want, and type '0' to next : ").lower()
         if select == "0":
             break
         if select in Punctuation_Select:
@@ -49,10 +60,7 @@ while Run_Program:
 
     check_vocab(Shuffled_answer)
 
+    print("===============")
     if input("Want to play again? Type 'y' or 'n' : ").lower() == 'n':
-        print("End this program")
+        print("See you naxt time.")
         Run_Program = False
-
-
-print(Shuffled_Punctuation)
-print(Punctuation_Select)
