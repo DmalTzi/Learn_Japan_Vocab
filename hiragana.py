@@ -33,6 +33,7 @@ def check_vocab(latter):
                 point += 1
                 print(f"Your right, here you point : {point}")
             else:
+                failed.append(f"{CompareHandK_Reverse[i]} : {i}")
                 print(f"Your wrong, The asnwer is : '{CompareHandK_Reverse[i]}'")
                 print(f"Your point : {point}")
         except Exception as e:
@@ -47,6 +48,8 @@ while Run_Program:
     max_point = 0
     Punctuation_Select = []
     Shuffled_Punctuation = []
+    failed = []
+
     while True:
         select = input("Choise punctuation you want, and type '0' to next : ").lower()
         if select == "0":
@@ -61,8 +64,10 @@ while Run_Program:
     random.shuffle(Shuffled_answer)
 
     check_vocab(Shuffled_answer)
-
-    print("===============")
+    
+    print("======= your mistake =========")
+    [print(i) for i in failed]
+    print("================")
     if input("Want to play again? Type 'y' or 'n' : ").lower() == 'n':
         print("See you naxt time.")
         Run_Program = False
